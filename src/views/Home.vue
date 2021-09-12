@@ -8,6 +8,19 @@
     </b-navbar>
 
     <b-container class="mt-5">
+    <b-card header="運動賽事">
+        <b-row>
+        <b-col cols="4" v-for="(item, index) in sports" :key="index">
+            <b-card><ul>
+            <li>{{ item.name }}</li><br>
+            <b-button variant="success" style="float: right" @click="move(item.page)">查看</b-button>
+            </ul></b-card>
+        </b-col>
+        </b-row>
+    </b-card>
+    </b-container>
+
+    <b-container class="mt-5">
     <b-card header="Vue js 相關123">
         <b-row>
         <b-col cols="4" v-for="(item, index) in catalogItems" :key="index">
@@ -32,6 +45,10 @@
 export default {
     data() {
        return {
+            sports:[
+                {name: "美國職棒MLB", page: "2021-08-29"},
+                {name: "美國職籃NBA", page: "BasketBall"},
+            ],
             catalogItems: [
                 {name: "bootstrap", updateTime: "2021-08-29"},
                 {name: "bootstrap", updateTime: "2021-08-29"},
@@ -42,7 +59,10 @@ export default {
     methods: {
         test() {
             this.$router.push("StockHome/StockInfo");
-        }
+        },
+        move(page) {
+            this.$router.push(page);
+        },
     }
 }
 </script>

@@ -4,6 +4,7 @@ import Home from "@/views/Home.vue";
 import StockHome from "@/components/stock/StockHome";
 import StockInfo from "@/components/stock/StockInfo";
 import StockLog from "@/components/stock/StockLog";
+import BasketBall from "@/components/sport/BasketBall";
 
 Vue.use(VueRouter);
 
@@ -38,6 +39,14 @@ const routes = [
         }
       },
     ]
+  },
+  {
+    path: "/BasketBall",
+    name: "BasketBall",
+    component: BasketBall,
+    meta: {
+      title: "NBA"
+    }
   },
 ];
 
