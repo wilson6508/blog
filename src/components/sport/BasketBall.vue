@@ -7,7 +7,7 @@
           <v-select
             multiple
             v-model="selected1"
-            :options="['Canada', 'United States']"
+            :options="['Canada', 'United States1']"
           >
           </v-select>
         </b-row>
