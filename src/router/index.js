@@ -5,6 +5,7 @@ import StockHome from "@/components/stock/StockHome";
 import StockInfo from "@/components/stock/StockInfo";
 import StockLog from "@/components/stock/StockLog";
 import BasketBall from "@/components/sport/BasketBall";
+// import Table from "@/components/bsnotes/Table.vue";
 
 Vue.use(VueRouter);
 
@@ -47,7 +48,7 @@ const routes = [
     meta: {
       title: "NBA"
     }
-  },
+  }, 
 ];
 
 const router = new VueRouter({
