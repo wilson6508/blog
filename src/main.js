@@ -8,10 +8,13 @@ import VueSidebarMenu from 'vue-sidebar-menu';
 import 'vue-sidebar-menu/dist/vue-sidebar-menu.css';
 import vSelect from "vue-select";
 import "vue-select/dist/vue-select.css";
+import axios from 'axios';
+import VueAxios from 'vue-axios';
 
 Vue.config.productionTip = false;
 Vue.use(VueSidebarMenu);
 Vue.component("v-select", vSelect);
+Vue.use(VueAxios, axios);
 
 new Vue({
   router,
