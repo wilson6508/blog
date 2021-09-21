@@ -1,10 +1,31 @@
 <template>
   <div>
+    <b-navbar type="dark" variant="dark">
+      <b-navbar-nav class="collapse navbar-collapse justify-content-end">
+        <b-nav-item
+          href="https://docs.google.com/forms/d/e/1FAIpQLSciIB-sX4oNoz25sqtvokGIHEu0fgSGlnV77ldIX64B876iGQ/viewform?vc=0&c=0&w=1&flr=0"
+          target="_blank"
+          >聯絡作者</b-nav-item
+        >
+      </b-navbar-nav>
+    </b-navbar>
+
     <b-container class="mt-4" v-if="waitMappingTable">
       <b-card header="查詢面板">
         <b-row class="col-12">
-          <span>股票代號/名稱 : </span>
-          <v-select :options="options" v-model="selected"></v-select>
+          <span>&nbsp;股票代號/名稱 : </span>
+          <!-- <v-select :options="options" v-model="selected"></v-select> -->
+          <b-col cols="10" class="mt-2"
+            ><select class="form-select" v-model="selected">
+              <option
+                v-for="(item, index) in options"
+                :key="index"
+                :value="item"
+              >
+                {{ item.label }}
+              </option>
+            </select>
+          </b-col>
         </b-row>
       </b-card>
     </b-container>
@@ -145,7 +166,8 @@ export default {
   },
   methods: {
     homePage() {
-      this.$router.push("/");
+      //   this.$router.push("/");
+      console.log(this.selected);
     },
     insert(type) {
       this.$refs.recordModal.length = this.excelTable.length;
