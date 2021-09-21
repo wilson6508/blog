@@ -166,8 +166,7 @@ export default {
   },
   methods: {
     homePage() {
-      //   this.$router.push("/");
-      console.log(this.selected);
+      this.$router.push("/");
     },
     insert(type) {
       this.$refs.recordModal.length = this.excelTable.length;
