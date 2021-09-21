@@ -11,6 +11,31 @@
     </b-navbar>
 
     <b-container class="mt-5">
+      <b-card header="股票相關">
+        <b-row>
+          <b-col
+            class="col-12 col-md-4"
+            v-for="(item, index) in stockSelf"
+            :key="index"
+          >
+            <b-card
+              ><ul>
+                <li>{{ item.name }}</li>
+                <br />
+                <b-button
+                  variant="success"
+                  style="float: right"
+                  @click="move(item.page)"
+                  >查看</b-button
+                >
+              </ul></b-card
+            >
+          </b-col>
+        </b-row>
+      </b-card>
+    </b-container>
+
+    <b-container class="mt-5">
       <b-card header="運動賽事">
         <b-row>
           <b-col
@@ -77,6 +102,7 @@
 export default {
   data() {
     return {
+      stockSelf: [{ name: "股票交易紀錄", page: "StockRecord" }],
       sports: [
         { name: "美國職棒MLB", page: "2021-08-29" },
         { name: "美國職籃NBA", page: "BasketBall" },

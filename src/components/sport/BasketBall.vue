@@ -1,113 +1,212 @@
 <template>
   <div>
-    <b-container class="mt-4">
-      <b-card header="查詢面板">
-        <b-row class="col-12">
-          <span>股票代號/名稱 : </span>
-          <v-select
-            multiple
-            v-model="selected1"
-            :options="['Canada', 'United States1']"
-          >
-          </v-select>
-        </b-row>
-        <b-row class="col-12 mt-2">
-          <b-col>
-            <b-button variant="primary">查詢</b-button>
-          </b-col>
-        </b-row>
-      </b-card>
-    </b-container>
-    <b-container class="mt-4">
-      <b-card header="0050">
-        <ul>
-          <li>名稱: {{ "元大台灣50" }}</li>
-          <br />
-          <li>淨股數: {{ -350 }}</li>
-          <br />
-          <li>淨收益: {{ 49141 }}</li>
-          <br />
-          <b-button variant="success" style="float: right" @click="insert()"
-            >賣出</b-button
-          >
-          <b-button
-            variant="danger"
-            style="float: right; margin-right: 4px"
-            @click="insert()"
-            >買進</b-button
-          >
-        </ul>
-      </b-card>
-    </b-container>
-    <b-container class="d-flex justify-content-center mt-3">
-      <b-button @click="test()">返回首頁</b-button>
-    </b-container>
-    <StockLogModal ref="editModal"></StockLogModal>
+    <b-card>
+      <div class="mb-2">
+        <b-form-checkbox v-model="stickyHeader" inline
+          >Sticky header</b-form-checkbox
+        >
+        <b-form-checkbox v-model="noCollapse" inline
+          >No border collapse</b-form-checkbox
+        >
+      </div>
+      <b-table
+        :sticky-header="stickyHeader"
+        :no-border-collapse="noCollapse"
+        responsive
+        :items="items"
+        :fields="fields"
+      >
+        <!-- We are using utility class `text-nowrap` to help illustrate horizontal scrolling -->
+        <template #head(id)="">
+          <div class="text-nowrap">Row ID</div>
+        </template>
+        <template #head()="scope">
+          <div class="text-nowrap">Heading {{ scope.label }}</div>
+        </template>
+      </b-table>
+    </b-card>
   </div>
 </template>
 
 <script>
-import StockLogModal from "@/components/sport/StockLogModal.vue";
-
 export default {
-  components: {
-    StockLogModal,
-  },
   data() {
     return {
-      selected1: [],
-      selected: "first",
-      options: [
-        { text: "First radio", value: "first" },
-        { text: "Second radio", value: "second" },
-        { text: "Third radio", value: "third" },
+      stickyHeader: true,
+      noCollapse: false,
+      fields: [
+        {
+          key: "id",
+          stickyColumn: true,
+          isRowHeader: true,
+          variant: "primary",
+        },
+        "a",
+        "b",
+        { key: "c", stickyColumn: true, variant: "info" },
+        "d",
+        "e",
+        "f",
+        "g",
+        "h",
+        "i",
+        "j",
+        "k",
+        "l",
       ],
-      array: [
+      items: [
         {
           id: 1,
-          transactionDate: "2021-01-01",
-          type: "buy",
-          stockId: "0050",
-          share: 999,
-          price: 140.6,
-          payment: 12000,
+          a: 0,
+          b: 1,
+          c: 2,
+          d: 3,
+          e: 4,
+          f: 5,
+          g: 6,
+          h: 7,
+          i: 8,
+          j: 9,
+          k: 10,
+          l: 11,
         },
         {
-          id: 1,
-          transactionDate: "2021-01-01",
-          type: "buy",
-          stockId: "0050",
-          share: 999,
-          price: 140.6,
-          payment: 12000,
+          id: 2,
+          a: 0,
+          b: 1,
+          c: 2,
+          d: 3,
+          e: 4,
+          f: 5,
+          g: 6,
+          h: 7,
+          i: 8,
+          j: 9,
+          k: 10,
+          l: 11,
+        },
+        {
+          id: 3,
+          a: 0,
+          b: 1,
+          c: 2,
+          d: 3,
+          e: 4,
+          f: 5,
+          g: 6,
+          h: 7,
+          i: 8,
+          j: 9,
+          k: 10,
+          l: 11,
+        },
+        {
+          id: 4,
+          a: 0,
+          b: 1,
+          c: 2,
+          d: 3,
+          e: 4,
+          f: 5,
+          g: 6,
+          h: 7,
+          i: 8,
+          j: 9,
+          k: 10,
+          l: 11,
+        },
+        {
+          id: 5,
+          a: 0,
+          b: 1,
+          c: 2,
+          d: 3,
+          e: 4,
+          f: 5,
+          g: 6,
+          h: 7,
+          i: 8,
+          j: 9,
+          k: 10,
+          l: 11,
+        },
+        {
+          id: 6,
+          a: 0,
+          b: 1,
+          c: 2,
+          d: 3,
+          e: 4,
+          f: 5,
+          g: 6,
+          h: 7,
+          i: 8,
+          j: 9,
+          k: 10,
+          l: 11,
+        },
+        {
+          id: 7,
+          a: 0,
+          b: 1,
+          c: 2,
+          d: 3,
+          e: 4,
+          f: 5,
+          g: 6,
+          h: 7,
+          i: 8,
+          j: 9,
+          k: 10,
+          l: 11,
+        },
+        {
+          id: 8,
+          a: 0,
+          b: 1,
+          c: 2,
+          d: 3,
+          e: 4,
+          f: 5,
+          g: 6,
+          h: 7,
+          i: 8,
+          j: 9,
+          k: 10,
+          l: 11,
+        },
+        {
+          id: 9,
+          a: 0,
+          b: 1,
+          c: 2,
+          d: 3,
+          e: 4,
+          f: 5,
+          g: 6,
+          h: 7,
+          i: 8,
+          j: 9,
+          k: 10,
+          l: 11,
+        },
+        {
+          id: 10,
+          a: 0,
+          b: 1,
+          c: 2,
+          d: 3,
+          e: 4,
+          f: 5,
+          g: 6,
+          h: 7,
+          i: 8,
+          j: 9,
+          k: 10,
+          l: 11,
         },
       ],
     };
-  },
-  methods: {
-    insert() {
-      //   this.$refs.editModal.stockId = stockId;
-      //   this.$refs.editModal.kind = kind;
-      this.$refs.editModal.modalShow = true;
-    },
-    test() {
-      //   var data = JSON.stringify({
-      //     url: "https://jsonplaceholder.typicode.com/todos/1",
-      //   });
-      //   console.log(data);
-      var data = JSON.stringify(this.array);
-      this.axios
-        .post(
-          "https://script.google.com/macros/s/AKfycbwgcXdfywwn7_FJ2cAmJwHtPyPW0jmdZ8K_0eFmlAIjxV1M1i3YwqG3wFVosfLb9dKr/exec",
-          data
-        )
-        .then(function (response) {
-          console.log(response.data);
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
-    },
   },
 };
 </script>

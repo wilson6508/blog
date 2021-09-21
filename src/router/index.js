@@ -6,24 +6,23 @@ import StockInfo from "@/components/stock/StockInfo";
 import StockLog from "@/components/stock/StockLog";
 import BasketBall from "@/components/sport/BasketBall";
 // import Table from "@/components/bsnotes/Table.vue";
+import StockRecord from "@/components/stockSelf/StockRecord.vue";
 
 Vue.use(VueRouter);
 
-const routes = [
-  {
+const routes = [{
     path: "/",
     name: "Home",
     component: Home,
     meta: {
       title: "首頁"
     }
-  }, 
+  },
   {
     path: "/StockHome",
     name: "StockHome",
     component: StockHome,
-    children: [
-      {
+    children: [{
         path: "StockInfo",
         name: "StockInfo",
         component: StockInfo,
@@ -48,7 +47,15 @@ const routes = [
     meta: {
       title: "NBA"
     }
-  }, 
+  },
+  {
+    path: "/StockRecord",
+    name: "StockRecord",
+    component: StockRecord,
+    meta: {
+      title: "股票交易紀錄"
+    }
+  },
 ];
 
 const router = new VueRouter({
