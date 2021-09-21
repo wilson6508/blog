@@ -1,15 +1,22 @@
 <template>
   <div>
-    <b-container class="mt-4">
+    <b-container class="mt-4" v-if="waitMappingTable">
       <b-card header="查詢面板">
         <b-row class="col-12">
           <span>股票代號/名稱 : </span>
-          <b-form-select v-model="selected" :options="options"></b-form-select>
+          <v-select :options="options" v-model="selected"></v-select>
         </b-row>
       </b-card>
     </b-container>
 
-    <b-container class="mt-4" v-if="selected !== null && selected !== ''">
+    <b-container
+      class="mt-4"
+      v-if="
+        selected !== null &&
+        selected.label !== '請選擇欲查詢的股票' &&
+        selected.label !== '查詢全部'
+      "
+    >
       <b-card :header="selected.stockId">
         <ul>
           <li>名稱: {{ selected.stockName }}</li>
@@ -30,7 +37,10 @@
       </b-card>
     </b-container>
 
-    <b-container class="mt-4" v-if="selected === ''">
+    <b-container
+      class="mt-4"
+      v-if="selected !== null && selected.label === '查詢全部'"
+    >
       <b-card class="text-nowrap">
         <b-table
           :items="items"
@@ -42,7 +52,10 @@
       </b-card>
     </b-container>
 
-    <b-container class="d-flex justify-content-center mt-3">
+    <b-container
+      class="d-flex justify-content-center mt-3"
+      v-if="waitMappingTable"
+    >
       <b-button @click="homePage()">返回首頁</b-button>
     </b-container>
 
@@ -61,13 +74,11 @@ export default {
   computed: {
     options() {
       const array = [];
-      array[0] = { text: "請選擇欲查詢的股票", value: null };
-      array[1] = { text: "查詢全部", value: "" };
+      array[0] = { label: "請選擇欲查詢的股票" };
+      array[1] = { label: "查詢全部" };
       this.mappingTable.forEach((element) => {
-        array.push({
-          text: element.stockId + " " + element.stockName,
-          value: element,
-        });
+        element.label = element.stockId + " " + element.stockName;
+        array.push(element);
       });
       return array;
     },
@@ -99,9 +110,11 @@ export default {
   beforeMount() {
     this.getMappingTable();
     this.getExcelTable();
+    this.selected = this.options[0];
   },
   data() {
     return {
+      waitMappingTable: false,
       selected: null,
       mappingTable: [],
       excelTable: [],
@@ -155,7 +168,7 @@ export default {
         )
         .then((response) => {
           this.mappingTable = response.data;
-          alert("done");
+          this.waitMappingTable = true;
         })
         .catch((error) => {
           console.log(error);

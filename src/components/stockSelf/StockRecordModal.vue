@@ -28,8 +28,12 @@
             </thead>
             <tbody>
               <tr v-for="item in array" :key="item.index">
-                <td><b-form-input v-model="item.share"></b-form-input></td>
-                <td><b-form-input v-model="item.price"></b-form-input></td>
+                <td>
+                  <b-form-input v-model.number="item.share"></b-form-input>
+                </td>
+                <td>
+                  <b-form-input v-model.number="item.price"></b-form-input>
+                </td>
                 <td>
                   <i
                     class="fas fa-plus-circle fa-lg mt-2"
@@ -67,6 +71,23 @@
     </b-modal>
   </div>
 </template>
+
+<style>
+.close {
+  float: right;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1;
+  color: #000;
+  text-shadow: 0 1px 0 #fff;
+  opacity: 0.5;
+}
+button.close {
+  padding: 0;
+  background-color: transparent;
+  border: 0;
+}
+</style>
 
 <script>
 export default {
