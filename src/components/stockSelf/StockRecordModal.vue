@@ -29,7 +29,10 @@
             <tbody>
               <tr v-for="item in array" :key="item.index">
                 <td>
-                  <b-form-input v-model.number="item.share"></b-form-input>
+                  <b-form-input
+                    v-model.number="item.share"
+                    autofocus
+                  ></b-form-input>
                 </td>
                 <td>
                   <b-form-input v-model.number="item.price"></b-form-input>
