@@ -76,7 +76,7 @@
       <b-card>
         <template #header>
           <Chevron v-b-toggle.b-card-3></Chevron>
-          {{ "Vue js 相關" }}
+          {{ "Vue js 相關123" }}
         </template>
         <b-collapse id="b-card-3" visible>
           <b-row>
