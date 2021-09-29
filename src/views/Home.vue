@@ -76,7 +76,7 @@
       <b-card>
         <template #header>
           <Chevron v-b-toggle.b-card-3></Chevron>
-          {{ "Vue js 相關123" }}
+          {{ "個人筆記" }}
         </template>
         <b-collapse id="b-card-3" visible>
           <b-row>
@@ -94,7 +94,7 @@
                   <b-button
                     variant="success"
                     style="float: right"
-                    @click="test()"
+                    @click="move(item.page)"
                     >查看</b-button
                   >
                 </ul>
@@ -128,16 +128,19 @@ export default {
   },
   data() {
     return {
-      stockSelf: [{ name: "股票交易紀錄", page: "StockRecord" }],
+      stockSelf: [
+        { name: "淨值查詢", page: "StockApi" },
+        { name: "股票交易紀錄", page: "StockRecord" },
+      ],
       sports: [
         { name: "美國職棒MLB", page: "2021-08-29" },
         { name: "美國職籃NBA", page: "BasketBall" },
         { name: "美國冰球NHL", page: "BasketBall" },
       ],
       catalogItems: [
-        { name: "bootstrap", updateTime: "2021-08-29" },
-        { name: "bootstrap", updateTime: "2021-08-29" },
-        { name: "bootstrap", updateTime: "2021-08-29" },
+        { name: "Vue", page: "VueHome/Pagination01" },
+        { name: "Java", page: "VueHome" },
+        { name: "DB", page: "VueHome" },
       ],
       selected: [],
       collapsed: true,
