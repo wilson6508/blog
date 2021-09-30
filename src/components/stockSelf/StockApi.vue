@@ -10,9 +10,15 @@
       </b-navbar-nav>
     </b-navbar>
 
-    <b-container class="mt-4">
+    <b-container class="mt-4 text-nowrap">
       <b-card header="ETF淨值">
-        <b-table striped hover :items="items" :fields="fields"></b-table>
+        <b-table
+          striped
+          hover
+          :items="items"
+          :fields="fields"
+          responsive
+        ></b-table>
       </b-card>
     </b-container>
 
@@ -45,16 +51,24 @@ export default {
       ],
       items: [],
       fields: [
+        // {
+        //   key: "a",
+        //   label: "股票代號",
+        //   class: "text-center",
+        //   stickyColumn: true,
+        //   sortable: true,
+        // },
+        // {
+        //   key: "b",
+        //   label: "股票名稱",
+        //   class: "text-center",
+        // },
         {
-          key: "a",
-          label: "股票代號",
+          key: "idName",
+          label: "股票代號&名稱",
           class: "text-center",
           sortable: true,
-        },
-        {
-          key: "b",
-          label: "股票名稱",
-          class: "text-center",
+          // stickyColumn: true,
         },
         {
           key: "e",
@@ -102,6 +116,9 @@ export default {
           this.items = this.msgArrayList.filter((e) =>
             this.queryList.includes(e.a)
           );
+          for (const item of this.items) {
+            item.idName = item.a + item.b;
+          }
         })
         .catch((error) => {
           console.log(error);
