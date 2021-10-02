@@ -8,8 +8,9 @@ import BasketBall from "@/components/sport/BasketBall";
 import VueHome from "@/components/vue/VueHome.vue";
 import Pagination01 from "@/components/vue/Pagination01.vue";
 import Pagination02 from "@/components/vue/Pagination02.vue";
-import StockRecord from "@/components/stockSelf/StockRecord.vue";
+import Rollover from "@/components/stockSelf/Rollover.vue";
 import StockApi from "@/components/stockSelf/StockApi.vue";
+import StockRecord from "@/components/stockSelf/StockRecord.vue";
 
 Vue.use(VueRouter);
 
@@ -52,11 +53,11 @@ const routes = [{
     }
   },
   {
-    path: "/StockRecord",
-    name: "StockRecord",
-    component: StockRecord,
+    path: "/Rollover",
+    name: "Rollover",
+    component: Rollover,
     meta: {
-      title: "股票交易紀錄"
+      title: "轉倉測試"
     }
   },
   {
@@ -65,6 +66,14 @@ const routes = [{
     component: StockApi,
     meta: {
       title: "淨值查詢"
+    }
+  },
+  {
+    path: "/StockRecord",
+    name: "StockRecord",
+    component: StockRecord,
+    meta: {
+      title: "股票交易紀錄"
     }
   },
   {

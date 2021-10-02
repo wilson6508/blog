@@ -129,6 +129,7 @@ export default {
   data() {
     return {
       stockSelf: [
+        { name: "轉倉測試", page: "Rollover" },
         { name: "淨值查詢", page: "StockApi" },
         { name: "股票交易紀錄", page: "StockRecord" },
       ],

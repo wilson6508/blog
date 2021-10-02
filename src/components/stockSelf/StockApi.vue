@@ -1,15 +1,6 @@
 <template>
   <div>
-    <b-navbar type="dark" variant="dark">
-      <b-navbar-nav class="collapse navbar-collapse justify-content-end">
-        <b-nav-item
-          href="https://docs.google.com/forms/d/e/1FAIpQLSciIB-sX4oNoz25sqtvokGIHEu0fgSGlnV77ldIX64B876iGQ/viewform?vc=0&c=0&w=1&flr=0"
-          target="_blank"
-          >聯絡作者</b-nav-item
-        >
-      </b-navbar-nav>
-    </b-navbar>
-
+    <Header></Header>
     <b-container class="mt-4 text-nowrap">
       <b-card header="ETF淨值">
         <b-table
@@ -21,16 +12,19 @@
         ></b-table>
       </b-card>
     </b-container>
-
-    <b-container class="d-flex justify-content-center mt-3">
-      <b-button @click="homePage()">返回首頁</b-button>
-      <!-- <b-button style="margin-left: 20px" @click="getApiRep123()" variant="dark">重新整理</b-button> -->
-    </b-container>
+    <Footer></Footer>
   </div>
 </template>
 
 <script>
+import Header from "@/components/Header.vue";
+import Footer from "@/components/Footer.vue";
+
 export default {
+  components: {
+    Header,
+    Footer,
+  },
   mounted() {
     this.getApiRep123();
   },
@@ -89,10 +83,6 @@ export default {
     };
   },
   methods: {
-    homePage() {
-      this.$router.push("/");
-      //   console.log(this.msgArrayList);
-    },
     getApiRep123() {
       const data = {
         url: "https://mis.twse.com.tw/stock/data/all_etf.txt?1632842984044&_=1632842983379",

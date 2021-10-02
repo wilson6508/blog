@@ -1,15 +1,6 @@
 <template>
   <div>
-    <b-navbar type="dark" variant="dark">
-      <b-navbar-nav class="collapse navbar-collapse justify-content-end">
-        <b-nav-item
-          href="https://docs.google.com/forms/d/e/1FAIpQLSciIB-sX4oNoz25sqtvokGIHEu0fgSGlnV77ldIX64B876iGQ/viewform?vc=0&c=0&w=1&flr=0"
-          target="_blank"
-          >聯絡作者</b-nav-item
-        >
-      </b-navbar-nav>
-    </b-navbar>
-
+    <Header></Header>
     <b-container class="mt-4" v-if="waitMappingTable">
       <b-card>
         <template #header>
@@ -44,7 +35,6 @@
         </b-collapse>
       </b-card>
     </b-container>
-
     <b-container
       class="mt-4"
       v-if="stockSelected !== null && stockSelected !== '查詢全部'"
@@ -68,7 +58,6 @@
         </ul>
       </b-card>
     </b-container>
-
     <b-container
       class="mt-4"
       v-if="stockSelected !== null && stockSelected === '查詢全部'"
@@ -83,14 +72,7 @@
         </b-table>
       </b-card>
     </b-container>
-
-    <b-container
-      class="d-flex justify-content-center mt-3"
-      v-if="waitMappingTable"
-    >
-      <b-button @click="homePage()">返回首頁</b-button>
-    </b-container>
-
+    <Footer></Footer>
     <StockRecordModal ref="recordModal"></StockRecordModal>
   </div>
 </template>
@@ -103,11 +85,15 @@
 
 <script>
 const moment = require("moment");
+import Header from "@/components/Header.vue";
+import Footer from "@/components/Footer.vue";
 import Chevron from "@/components/Chevron.vue";
 import StockRecordModal from "@/components/stockSelf/StockRecordModal.vue";
 
 export default {
   components: {
+    Header,
+    Footer,
     Chevron,
     StockRecordModal,
   },
@@ -189,9 +175,6 @@ export default {
     };
   },
   methods: {
-    homePage() {
-      this.$router.push("/");
-    },
     insert(type) {
       this.$refs.recordModal.length = this.excelTable.length;
       this.$refs.recordModal.type = type;
