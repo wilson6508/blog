@@ -11,12 +11,26 @@
     </b-navbar>
 
     <b-container class="mt-4" v-if="waitMappingTable">
-      <b-card header="查詢面板">
-        <b-row class="col-12">
-          <span>&nbsp;股票代號/名稱 : </span>
-          <!-- <v-select :options="options" v-model="selected"></v-select> -->
-          <b-col cols="10" class="mt-2"
-            ><select class="form-select" v-model="selected">
+      <b-card>
+        <template #header>
+          <Chevron v-b-toggle.b-card-1></Chevron>
+          {{ "查詢面板" }}
+        </template>
+        <b-collapse id="b-card-1" visible>
+          <b-row class="col-12">
+            <span>&nbsp;股票代號 名稱 : </span>
+            <b-form-radio-group
+              class="chWidth"
+              v-model="stockSelected"
+              :options="stockOptions"
+              text-field="text"
+              value-field="value"
+              disabled-field="disabled"
+              plain
+            ></b-form-radio-group>
+            <!-- <b-col cols="10" class="mt-2"> -->
+            <!-- <v-select :options="options" v-model="selected"></v-select> -->
+            <!-- <select class="form-select" v-model="selected">
               <option
                 v-for="(item, index) in options"
                 :key="index"
@@ -24,23 +38,20 @@
               >
                 {{ item.label }}
               </option>
-            </select>
-          </b-col>
-        </b-row>
+            </select> -->
+            <!-- </b-col> -->
+          </b-row>
+        </b-collapse>
       </b-card>
     </b-container>
 
     <b-container
       class="mt-4"
-      v-if="
-        selected !== null &&
-        selected.label !== '請選擇欲查詢的股票' &&
-        selected.label !== '查詢全部'
-      "
+      v-if="stockSelected !== null && stockSelected !== '查詢全部'"
     >
-      <b-card :header="selected.stockId">
+      <b-card :header="stockSelected.stockId">
         <ul>
-          <li>名稱: {{ selected.stockName }}</li>
+          <li>名稱: {{ stockSelected.stockName }}</li>
           <br />
           <b-button
             variant="success"
@@ -60,7 +71,7 @@
 
     <b-container
       class="mt-4"
-      v-if="selected !== null && selected.label === '查詢全部'"
+      v-if="stockSelected !== null && stockSelected === '查詢全部'"
     >
       <b-card class="text-nowrap">
         <b-table
@@ -84,12 +95,20 @@
   </div>
 </template>
 
+<style>
+.chWidth .form-check-inline {
+  width: 220px;
+}
+</style>
+
 <script>
 const moment = require("moment");
+import Chevron from "@/components/Chevron.vue";
 import StockRecordModal from "@/components/stockSelf/StockRecordModal.vue";
 
 export default {
   components: {
+    Chevron,
     StockRecordModal,
   },
   computed: {
@@ -131,12 +150,10 @@ export default {
   beforeMount() {
     this.getMappingTable();
     this.getExcelTable();
-    this.selected = this.options[0];
   },
   data() {
     return {
       waitMappingTable: false,
-      selected: null,
       mappingTable: [],
       excelTable: [],
       fields: [
@@ -162,6 +179,13 @@ export default {
           class: "text-center",
         },
       ],
+      stockSelected: null,
+      stockOptions: [],
+      queryAll: {
+        text: "查詢全部",
+        value: "查詢全部",
+        disabled: false,
+      },
     };
   },
   methods: {
@@ -172,8 +196,8 @@ export default {
       this.$refs.recordModal.length = this.excelTable.length;
       this.$refs.recordModal.type = type;
       this.$refs.recordModal.tDate = moment(new Date()).format("YYYY-MM-DD");
-      this.$refs.recordModal.stockId = this.selected.stockId;
-      this.$refs.recordModal.etf = this.selected.etf;
+      this.$refs.recordModal.stockId = this.stockSelected.stockId;
+      this.$refs.recordModal.etf = this.stockSelected.etf;
       this.$refs.recordModal.modalShow = true;
     },
     getMappingTable() {
@@ -189,6 +213,15 @@ export default {
         )
         .then((response) => {
           this.mappingTable = response.data;
+          this.stockOptions = [];
+          for (const item of this.mappingTable) {
+            this.stockOptions.push({
+              text: `${item.stockId} ${item.stockName}`,
+              value: item,
+              disabled: false,
+            });
+          }
+          this.stockOptions.push(this.queryAll);
           this.waitMappingTable = true;
         })
         .catch((error) => {

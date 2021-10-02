@@ -35,7 +35,11 @@
                   ></b-form-input>
                 </td>
                 <td>
-                  <b-form-input v-model.number="item.price"></b-form-input>
+                  <b-form-input
+                    v-model.number="item.price"
+                    @keyup.enter="save()"
+                    @keyup.down="addRow(item.index)"
+                  ></b-form-input>
                 </td>
                 <td>
                   <i
