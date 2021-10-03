@@ -11,7 +11,9 @@ import "vue-select/dist/vue-select.css";
 import axios from 'axios';
 import VueAxios from 'vue-axios';
 import vueMoment from 'vue-moment';
+import ApiUrl from "@/mixins/ApiUrl.js";
 
+Vue.mixin(ApiUrl);
 Vue.config.productionTip = false;
 Vue.use(VueSidebarMenu);
 Vue.component("v-select", vSelect);
