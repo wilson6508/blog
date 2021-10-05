@@ -63,13 +63,7 @@
       v-if="stockSelected !== null && stockSelected === '查詢全部'"
     >
       <b-card class="text-nowrap">
-        <b-table
-          :items="items"
-          :fields="fields"
-          :sticky-header="true"
-          responsive
-        >
-        </b-table>
+        <b-table :items="items" :fields="fields" responsive> </b-table>
       </b-card>
     </b-container>
     <Footer></Footer>
@@ -109,7 +103,7 @@ export default {
       return array;
     },
     items() {
-      const array = [];
+      let array = [];
       const stockIdSet = new Set();
       this.excelTable.forEach((e) => {
         stockIdSet.add(e.stockId);
@@ -130,6 +124,7 @@ export default {
           deltaPayment: deltaPayment,
         });
       }
+      array = array.sort(this.compare);
       return array;
     },
   },
@@ -212,16 +207,9 @@ export default {
         });
     },
     getExcelTable() {
-      const data = {
-        url: "https://docs.google.com/spreadsheets/d/1pwnsPU4Ch2CjPGEXucU4qnsPoMpDoVNDRe9rORIZhIQ/edit#gid=0",
-        page: 2,
-      };
-      const postBody = JSON.stringify(data);
+      const postBody = JSON.stringify({ url: this.getExcelUrl(), page: 2 });
       this.axios
-        .post(
-          "https://script.google.com/macros/s/AKfycbyvt9nwYggD_GbQKXSY9P8tMDVyMcF8rs9981SXYvphxn4q9TmThZ_N6d_biFKGEryP/exec",
-          postBody
-        )
+        .post(this.getReadAllValueApi(), postBody)
         .then((response) => {
           this.excelTable = response.data;
           this.$refs.recordModal.modalShow = false;
@@ -233,6 +221,17 @@ export default {
     findStockName(stockId) {
       const obj = this.mappingTable.find((e) => e.stockId === stockId);
       return obj.stockName;
+    },
+    compare(a, b) {
+      const aa2 = parseInt(a.stockId.charAt(2));
+      const ba2 = parseInt(b.stockId.charAt(2));
+      if (aa2 !== ba2) {
+        return aa2 - ba2;
+      } else {
+        const aa3 = parseInt(a.stockId.charAt(3));
+        const ba3 = parseInt(b.stockId.charAt(3));
+        return aa3 - ba3;
+      }
     },
   },
 };
