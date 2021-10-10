@@ -12,5 +12,8 @@ export default {
         getExcelUrl() {
             return process.env.VUE_APP_EXCEL_URL;
         },
+        getNbaApi() {
+            return process.env.VUE_APP_NBA_API;
+        },
     }
 };
