@@ -27,6 +27,7 @@ import {
     FormDatepickerPlugin,
     FormTextareaPlugin,
     FormSelectPlugin,
+    FormTagsPlugin,
 } from 'bootstrap-vue';
 
 import Vue from 'vue';
@@ -61,3 +62,4 @@ Vue.use(FormRadioPlugin);
 Vue.use(FormDatepickerPlugin);
 Vue.use(FormTextareaPlugin);
 Vue.use(FormSelectPlugin);
+Vue.use(FormTagsPlugin);

@@ -122,7 +122,7 @@ export default {
         { name: "股票交易紀錄", page: "StockRecord" },
       ],
       sports: [
-        { name: "美國職棒MLB", page: "2021-08-29" },
+        { name: "美國職棒MLB", page: "BaseBall" },
         { name: "美國職籃NBA", page: "BasketBall" },
         { name: "美國冰球NHL", page: "BasketBall" },
       ],

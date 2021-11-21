@@ -109,6 +109,7 @@ export default {
         { partid: 1149, name: "鳳凰城太陽" },
         { partid: 1150, name: "沙加緬度國王" },
         { partid: 1151, name: "洛杉磯快艇" },
+        { partid: 1152, name: "金州勇士" },
         { partid: 1153, name: "聖安東尼奧馬刺" },
         { partid: 1155, name: "休士頓火箭" },
         { partid: 1156, name: "曼斐斯灰熊" },
