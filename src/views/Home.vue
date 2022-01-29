@@ -1,147 +1,112 @@
 <template>
-  <div>
-    <Header></Header>
-    <b-container>
-      <!-- <b-container fluid> -->
-      <b-row>
-        <b-col class="col-12 col-md-4">
-          <b-container class="mt-5">
-            <b-card>
-              <template #header>
-                <Chevron v-b-toggle.b-card-1></Chevron>
-                {{ "股票相關" }}
-              </template>
-              <b-collapse id="b-card-1" visible>
-                <b-row>
-                  <b-col
-                    class="col-12"
-                    v-for="(item, index) in stockSelf"
-                    :key="index"
+  <div class="ms-4">
+    <nav
+      class="navbar navbar-opv navbar-light navbar-vertical navbar-expand-md"
+    >
+      <div class="d-flex align-items-center">
+        <div class="toggle-icon-wrapper mt-2 mb-2">
+          <button
+            class="btn navbar-toggler-humburger-icon navbar-vertical-toggle"
+            data-bs-toggle="tooltip"
+            data-bs-placement="left"
+            title="切換選單"
+          >
+            <span class="navbar-toggle-icon"
+              ><span class="toggle-line"></span
+            ></span>
+          </button>
+        </div>
+        <a class="navbar-brand" href="#">
+          <div class="d-flex align-items-center py-3"></div>
+        </a>
+      </div>
+      <div
+        class="collapse navbar-collapse position-relative"
+        id="navbarVerticalCollapse"
+      >
+        <div class="bg-holder navbar-opv-shape"></div>
+        <div class="navbar-vertical-content scrollbar position-relative">
+          <ul class="navbar-nav flex-column mb-3" id="navbarVerticalNav">
+            <li class="nav-item">
+              <a
+                class="nav-link dropdown-indicator hvr-icon-grow"
+                href="#opv-listening"
+                role="button"
+                data-bs-toggle="collapse"
+                aria-expanded="true"
+                aria-controls="opv-listening"
+              >
+                <div class="d-flex align-items-center">
+                  <span class="nav-link-icon">
+                    <span class="material-icons-two-tone hvr-icon"
+                      >preview</span
+                    > </span
+                  ><span class="nav-link-text ps-1">觀測分析</span>
+                </div>
+              </a>
+
+              <ul class="nav collapse show" id="opv-listening">
+                <li class="nav-item">
+                  <a
+                    class="nav-link dropdown-indicator hvr-icon-grow"
+                    href="#opv-list"
+                    data-bs-toggle="collapse"
+                    aria-expanded="true"
+                    aria-controls="multi-level"
                   >
-                    <b-card
-                      ><ul>
-                        <li>{{ item.name }}</li>
-                        <br />
-                        <b-button
-                          variant="success"
-                          style="float: right"
-                          @click="move(item.page)"
-                          >查看</b-button
-                        >
-                      </ul></b-card
-                    >
-                  </b-col>
-                </b-row>
-              </b-collapse>
-            </b-card>
-          </b-container>
-        </b-col>
-        <b-col class="col-12 col-md-4">
-          <b-container class="mt-5">
-            <b-card>
-              <template #header>
-                <Chevron v-b-toggle.b-card-2></Chevron>
-                {{ "運動賽事" }}
-              </template>
-              <b-collapse id="b-card-2" visible>
-                <b-row>
-                  <b-col
-                    class="col-12"
-                    v-for="(item, index) in sports"
-                    :key="index"
-                  >
-                    <b-card
-                      ><ul>
-                        <li>{{ item.name }}</li>
-                        <br />
-                        <b-button
-                          variant="success"
-                          style="float: right"
-                          @click="move(item.page)"
-                          >查看</b-button
-                        >
-                      </ul></b-card
-                    >
-                  </b-col>
-                </b-row>
-              </b-collapse>
-            </b-card>
-          </b-container>
-        </b-col>
-        <b-col class="col-12 col-md-4">
-          <b-container class="mt-5">
-            <b-card>
-              <template #header>
-                <Chevron v-b-toggle.b-card-3></Chevron>
-                {{ "個人筆記" }}
-              </template>
-              <b-collapse id="b-card-3" visible>
-                <b-row>
-                  <b-col
-                    class="col-12"
-                    v-for="(item, index) in catalogItems"
-                    :key="index"
-                  >
-                    <b-card>
-                      <ul>
-                        <li>{{ item.name }}</li>
-                        <br />
-                        <b-button
-                          variant="success"
-                          style="float: right"
-                          @click="move(item.page)"
-                          >查看</b-button
-                        >
-                      </ul>
-                    </b-card>
-                  </b-col>
-                </b-row>
-              </b-collapse>
-            </b-card>
-          </b-container>
-        </b-col>
-      </b-row>
-    </b-container>
+                    <div class="d-flex align-items-center">
+                      <span class="nav-link-icon"
+                        ><span class="material-icons-outlined hvr-icon"
+                          >article</span
+                        ></span
+                      ><span class="nav-link-text ps-1">文章</span>
+                    </div>
+                  </a>
+                  <ul class="nav collapse show" id="opv-list">
+                    <li class="nav-item active">
+                      <a
+                        class="nav-link hvr-icon-grow active"
+                        href="Listening_List.html"
+                        data-bs-toggle=""
+                        aria-expanded="false"
+                      >
+                        <div class="d-flex align-items-center">
+                          <span class="nav-link-icon"
+                            ><span class="material-icons-outlined hvr-icon"
+                              >list_alt</span
+                            ></span
+                          ><span class="nav-link-text ps-1">文章列表</span>
+                        </div>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <router-view />
   </div>
 </template>
 
 <script>
-import Header from "@/components/Header.vue";
-import Chevron from "@/components/Chevron.vue";
-
 export default {
-  components: {
-    Header,
-    Chevron,
-  },
-  data() {
-    return {
-      stockSelf: [
-        { name: "轉倉測試", page: "Rollover" },
-        { name: "淨值查詢", page: "StockApi" },
-        { name: "股票交易紀錄", page: "StockRecord" },
-      ],
-      sports: [
-        { name: "美國職棒MLB", page: "BaseBall" },
-        { name: "美國職籃NBA", page: "BasketBall" },
-        { name: "美國冰球NHL", page: "BasketBall" },
-      ],
-      catalogItems: [
-        { name: "Vue", page: "VueHome/Pagination01" },
-        { name: "Java", page: "VueHome" },
-        { name: "DB", page: "VueHome" },
-      ],
-      selected: [],
-      collapsed: true,
-    };
-  },
-  methods: {
-    test() {
-      this.$router.push("StockHome/StockInfo");
-    },
-    move(page) {
-      this.$router.push(page);
-    },
+  name: "MainPage",
+  mounted() {
+    var isFluid = JSON.parse(localStorage.getItem("isFluid"));
+    if (isFluid) {
+      var container = document.querySelector("[data-layout]");
+      container.classList.remove("container");
+      container.classList.add("container-fluid");
+    }
+    var navbarStyle = localStorage.getItem("navbarStyle");
+    if (navbarStyle && navbarStyle !== "transparent") {
+      document
+        .querySelector(".navbar-vertical")
+        .classList.add(`navbar-${navbarStyle}`);
+    }
   },
 };
 </script>
