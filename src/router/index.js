@@ -20,7 +20,15 @@ const routes = [{
     component: Home,
     meta: {
       title: "首頁"
-    }
+    },
+    children: [{
+      path: "/BasketBall",
+      name: "BasketBall",
+      component: BasketBall,
+      meta: {
+        title: "NBA"
+      }
+    }, ],
   },
   {
     path: "/StockHome",
