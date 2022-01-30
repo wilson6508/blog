@@ -1,10 +1,12 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "@/views/Home.vue";
+import TeamList from "@/components/sport/TeamList.vue";
+import NBA from "@/components/sport/NBA.vue";
+import WelcomePage from "@/components/welcome/WelcomePage.vue";
 import StockHome from "@/components/stock/StockHome";
 import StockInfo from "@/components/stock/StockInfo";
 import StockLog from "@/components/stock/StockLog";
-import BasketBall from "@/components/sport/BasketBall.vue";
 import VueHome from "@/components/vue/VueHome.vue";
 import Pagination01 from "@/components/vue/Pagination01.vue";
 import Pagination02 from "@/components/vue/Pagination02.vue";
@@ -22,13 +24,27 @@ const routes = [{
       title: "首頁"
     },
     children: [{
-      path: "/BasketBall",
-      name: "BasketBall",
-      component: BasketBall,
-      meta: {
-        title: "NBA"
-      }
-    }, ],
+        path: "/WelcomePage",
+        component: WelcomePage,
+        meta: {
+          title: "總覽"
+        }
+      },
+      {
+        path: "/TeamList",
+        component: TeamList,
+        meta: {
+          title: "隊伍清單"
+        }
+      },
+      {
+        path: "/NBA",
+        component: NBA,
+        meta: {
+          title: "NBA"
+        }
+      },
+    ],
   },
   {
     path: "/StockHome",
@@ -51,14 +67,6 @@ const routes = [{
         }
       },
     ]
-  },
-  {
-    path: "/BasketBall",
-    name: "BasketBall",
-    component: BasketBall,
-    meta: {
-      title: "NBA"
-    }
   },
   {
     path: "/Rollover",
