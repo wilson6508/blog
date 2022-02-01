@@ -3,6 +3,8 @@ import VueRouter from "vue-router";
 import Home from "@/views/Home.vue";
 import TeamList from "@/components/sport/TeamList.vue";
 import NBA from "@/components/sport/NBA.vue";
+import DividendHistory from "@/components/stock/DividendHistory.vue";
+import PriceHistory from "@/components/stock/PriceHistory.vue";
 import WelcomePage from "@/components/welcome/WelcomePage.vue";
 import StockHome from "@/components/stock/StockHome";
 import StockInfo from "@/components/stock/StockInfo";
@@ -12,7 +14,6 @@ import Pagination01 from "@/components/vue/Pagination01.vue";
 import Pagination02 from "@/components/vue/Pagination02.vue";
 import Rollover from "@/components/stockSelf/Rollover.vue";
 import StockApi from "@/components/stockSelf/StockApi.vue";
-import StockRecord from "@/components/stockSelf/StockRecord.vue";
 
 Vue.use(VueRouter);
 
@@ -42,6 +43,20 @@ const routes = [{
         component: NBA,
         meta: {
           title: "NBA"
+        }
+      },
+      {
+        path: "/PriceHistory",
+        component: PriceHistory,
+        meta: {
+          title: "股價折線圖"
+        }
+      },
+      {
+        path: "/DividendHistory",
+        component: DividendHistory,
+        meta: {
+          title: "除息紀錄"
         }
       },
     ],
@@ -82,14 +97,6 @@ const routes = [{
     component: StockApi,
     meta: {
       title: "淨值查詢"
-    }
-  },
-  {
-    path: "/StockRecord",
-    name: "StockRecord",
-    component: StockRecord,
-    meta: {
-      title: "股票交易紀錄"
     }
   },
   {

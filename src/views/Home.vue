@@ -77,12 +77,30 @@ export default {
             {
               url: "TeamList",
               icon: "format_list_bulleted",
-              label: "隊伍清單",
+              label: "球隊清單",
             },
             {
               url: "NBA",
               icon: "sports_basketball",
               label: "NBA",
+            },
+          ],
+        },
+        {
+          id: "leftItem3",
+          use: "second",
+          icon: "paid",
+          label: "股票",
+          children: [
+            {
+              url: "PriceHistory",
+              icon: "show_chart",
+              label: "股價折線圖",
+            },
+            {
+              url: "DividendHistory",
+              icon: "savings",
+              label: "除息紀錄",
             },
           ],
         },
