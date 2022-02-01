@@ -27,7 +27,7 @@ const routes = [{
         path: "/WelcomePage",
         component: WelcomePage,
         meta: {
-          title: "總覽"
+          title: "首頁"
         }
       },
       {
@@ -123,6 +123,9 @@ const router = new VueRouter({
 });
 
 router.beforeEach((to, from, next) => {
+  if (to.path === "/") {
+    next("/WelcomePage");
+  }
   document.title = to.meta.title;
   next();
 });

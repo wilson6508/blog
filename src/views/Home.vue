@@ -104,6 +104,7 @@ export default {
         .querySelector(".navbar-vertical")
         .classList.add(`navbar-${navbarStyle}`);
     }
+    // this.$router.push("blog/WelcomePage");
   },
 };
 </script>

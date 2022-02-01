@@ -1,300 +1,158 @@
 <template>
-  <div class="card mb-3">
-    <div class="card-body position-relative">
-      <div class="table-responsive scrollbar">
-        <table class="table table-hover overflow-hidden">
-          <thead>
-            <tr>
-              <th scope="col">Name</th>
-              <th scope="col">Email</th>
-              <th scope="col">Phone</th>
-              <th scope="col">Address</th>
-              <th scope="col">Status</th>
-              <th class="text-end" scope="col">Amount</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr class="align-middle">
-              <td class="text-nowrap">
-                <div class="d-flex align-items-center">
-                  <div class="avatar avatar-xl"></div>
-                  <div class="ms-2">Ricky Antony</div>
-                </div>
-              </td>
-              <td class="text-nowrap">ricky@example.com</td>
-              <td class="text-nowrap">(201) 200-1851</td>
-              <td class="text-nowrap">2392 Main Avenue, Penasauka</td>
-              <td>
-                <span
-                  class="
-                    badge badge
-                    rounded-pill
-                    d-block
-                    p-2
-                    badge-soft-success
-                  "
-                  >Completed<span
-                    class="ms-1 fas fa-check"
-                    data-fa-transform="shrink-2"
-                  ></span
-                ></span>
-              </td>
-              <td class="text-end">$99</td>
-            </tr>
-            <tr class="align-middle">
-              <td class="text-nowrap">
-                <div class="d-flex align-items-center">
-                  <div class="avatar avatar-xl"></div>
-                  <div class="ms-2">Emma Watson</div>
-                </div>
-              </td>
-              <td class="text-nowrap">emma@example.com</td>
-              <td class="text-nowrap">(212) 228-8403</td>
-              <td class="text-nowrap">2289 5th Avenue, New York</td>
-              <td>
-                <span
-                  class="
-                    badge badge
-                    rounded-pill
-                    d-block
-                    p-2
-                    badge-soft-success
-                  "
-                  >Completed<span
-                    class="ms-1 fas fa-check"
-                    data-fa-transform="shrink-2"
-                  ></span
-                ></span>
-              </td>
-              <td class="text-end">$199</td>
-            </tr>
-            <tr class="align-middle">
-              <td class="text-nowrap">
-                <div class="d-flex align-items-center">
-                  <div class="avatar avatar-xl">
-                    <div class="avatar-name rounded-circle">
-                      <span>RA</span>
-                    </div>
-                  </div>
-                  <div class="ms-2">Rowen Atkinson</div>
-                </div>
-              </td>
-              <td class="text-nowrap">rown@example.com</td>
-              <td class="text-nowrap">(201) 200-1851</td>
-              <td class="text-nowrap">112 Bostwick Avenue, Jersey City</td>
-              <td>
-                <span
-                  class="
-                    badge badge
-                    rounded-pill
-                    d-block
-                    p-2
-                    badge-soft-primary
-                  "
-                  >Processing<span
-                    class="ms-1 fas fa-redo"
-                    data-fa-transform="shrink-2"
-                  ></span
-                ></span>
-              </td>
-              <td class="text-end">$755</td>
-            </tr>
-            <tr class="align-middle">
-              <td class="text-nowrap">
-                <div class="d-flex align-items-center">
-                  <div class="avatar avatar-xl"></div>
-                  <div class="ms-2">Antony Hopkins</div>
-                </div>
-              </td>
-              <td class="text-nowrap">antony@example.com</td>
-              <td class="text-nowrap">(901) 324-3127</td>
-              <td class="text-nowrap">3448 Ile De France St #242</td>
-              <td>
-                <span
-                  class="
-                    badge badge
-                    rounded-pill
-                    d-block
-                    p-2
-                    badge-soft-secondary
-                  "
-                  >On Hold<span
-                    class="ms-1 fas fa-ban"
-                    data-fa-transform="shrink-2"
-                  ></span
-                ></span>
-              </td>
-              <td class="text-end">$50</td>
-            </tr>
-            <tr class="align-middle">
-              <td class="text-nowrap">
-                <div class="d-flex align-items-center">
-                  <div class="avatar avatar-xl"></div>
-                  <div class="ms-2">Jennifer Schramm</div>
-                </div>
-              </td>
-              <td class="text-nowrap">jennifer@example.com</td>
-              <td class="text-nowrap">(828) 382-9631</td>
-              <td class="text-nowrap">659 Hannah Street, Charlotte</td>
-              <td>
-                <span
-                  class="
-                    badge badge
-                    rounded-pill
-                    d-block
-                    p-2
-                    badge-soft-warning
-                  "
-                  >Pending<span
-                    class="ms-1 fas fa-stream"
-                    data-fa-transform="shrink-2"
-                  ></span
-                ></span>
-              </td>
-              <td class="text-end">$150</td>
-            </tr>
-            <tr class="align-middle">
-              <td class="text-nowrap">
-                <div class="d-flex align-items-center">
-                  <div class="avatar avatar-xl"></div>
-                  <div class="ms-2">Ricky Antony</div>
-                </div>
-              </td>
-              <td class="text-nowrap">ricky@example.com</td>
-              <td class="text-nowrap">(201) 200-1851</td>
-              <td class="text-nowrap">2392 Main Avenue, Penasauka</td>
-              <td>
-                <span
-                  class="
-                    badge badge
-                    rounded-pill
-                    d-block
-                    p-2
-                    badge-soft-success
-                  "
-                  >Completed<span
-                    class="ms-1 fas fa-check"
-                    data-fa-transform="shrink-2"
-                  ></span
-                ></span>
-              </td>
-              <td class="text-end">$99</td>
-            </tr>
-            <tr class="align-middle">
-              <td class="text-nowrap">
-                <div class="d-flex align-items-center">
-                  <div class="avatar avatar-xl"></div>
-                  <div class="ms-2">Emma Watson</div>
-                </div>
-              </td>
-              <td class="text-nowrap">emma@example.com</td>
-              <td class="text-nowrap">(212) 228-8403</td>
-              <td class="text-nowrap">2289 5th Avenue, New York</td>
-              <td>
-                <span
-                  class="
-                    badge badge
-                    rounded-pill
-                    d-block
-                    p-2
-                    badge-soft-success
-                  "
-                  >Completed<span
-                    class="ms-1 fas fa-check"
-                    data-fa-transform="shrink-2"
-                  ></span
-                ></span>
-              </td>
-              <td class="text-end">$199</td>
-            </tr>
-            <tr class="align-middle">
-              <td class="text-nowrap">
-                <div class="d-flex align-items-center">
-                  <div class="avatar avatar-xl">
-                    <div class="avatar-name rounded-circle">
-                      <span>RA</span>
-                    </div>
-                  </div>
-                  <div class="ms-2">Rowen Atkinson</div>
-                </div>
-              </td>
-              <td class="text-nowrap">rown@example.com</td>
-              <td class="text-nowrap">(201) 200-1851</td>
-              <td class="text-nowrap">112 Bostwick Avenue, Jersey City</td>
-              <td>
-                <span
-                  class="
-                    badge badge
-                    rounded-pill
-                    d-block
-                    p-2
-                    badge-soft-primary
-                  "
-                  >Processing<span
-                    class="ms-1 fas fa-redo"
-                    data-fa-transform="shrink-2"
-                  ></span
-                ></span>
-              </td>
-              <td class="text-end">$755</td>
-            </tr>
-            <tr class="align-middle">
-              <td class="text-nowrap">
-                <div class="d-flex align-items-center">
-                  <div class="avatar avatar-xl"></div>
-                  <div class="ms-2">Antony Hopkins</div>
-                </div>
-              </td>
-              <td class="text-nowrap">antony@example.com</td>
-              <td class="text-nowrap">(901) 324-3127</td>
-              <td class="text-nowrap">3448 Ile De France St #242</td>
-              <td>
-                <span
-                  class="
-                    badge badge
-                    rounded-pill
-                    d-block
-                    p-2
-                    badge-soft-secondary
-                  "
-                  >On Hold<span
-                    class="ms-1 fas fa-ban"
-                    data-fa-transform="shrink-2"
-                  ></span
-                ></span>
-              </td>
-              <td class="text-end">$50</td>
-            </tr>
-            <tr class="align-middle">
-              <td class="text-nowrap">
-                <div class="d-flex align-items-center">
-                  <div class="avatar avatar-xl"></div>
-                  <div class="ms-2">Jennifer Schramm</div>
-                </div>
-              </td>
-              <td class="text-nowrap">jennifer@example.com</td>
-              <td class="text-nowrap">(828) 382-9631</td>
-              <td class="text-nowrap">659 Hannah Street, Charlotte</td>
-              <td>
-                <span
-                  class="
-                    badge badge
-                    rounded-pill
-                    d-block
-                    p-2
-                    badge-soft-warning
-                  "
-                  >Pending<span
-                    class="ms-1 fas fa-stream"
-                    data-fa-transform="shrink-2"
-                  ></span
-                ></span>
-              </td>
-              <td class="text-end">$150</td>
-            </tr>
-          </tbody>
-        </table>
+  <div>
+    <div class="card mb-3">
+      <div class="card-body position-relative">
+        <div class="row mb-3">
+          <div class="col-4">
+            <label class="form-label">選擇聯盟</label>
+            <select class="form-select">
+              <option selected="">選擇全部</option>
+              <option
+                v-for="(item, index) in leagues"
+                :key="index"
+                :value="item.value"
+              >
+                {{ item.label }}
+              </option>
+            </select>
+          </div>
+          <div class="col-4">
+            <label class="form-label">模糊搜尋</label>
+            <input class="form-control" type="text" v-model="fuzzySearch" />
+          </div>
+          <div class="col-4">
+            <label class="form-label">每頁顯示數量</label>
+            <select class="form-select" v-model="perPage">
+              <option value="1">1</option>
+              <option value="3">3</option>
+              <option value="5">5</option>
+              <option selected="" value="10">10</option>
+            </select>
+          </div>
+        </div>
       </div>
     </div>
+    <div v-if="teams.length > 0" class="card mb-3">
+      <div class="card-body position-relative">
+        <div class="table-responsive scrollbar">
+          <table class="table table-hover overflow-hidden">
+            <thead>
+              <tr class="text-center">
+                <th scope="col">序號</th>
+                <th scope="col">聯盟</th>
+                <th scope="col">分區</th>
+                <th scope="col">分組</th>
+                <th scope="col">隊伍</th>
+                <th scope="col">中文名稱</th>
+                <th scope="col">partid</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr
+                class="text-center align-middle"
+                v-for="(item, index) in displayTeams"
+                :key="index"
+              >
+                <td class="text-nowrap">
+                  {{ index + 1 + (currentPage - 1) * perPage }}
+                </td>
+                <td class="text-nowrap">{{ item.league }}</td>
+                <td class="text-nowrap">{{ item.note }}</td>
+                <td class="text-nowrap">{{ item.division }}</td>
+                <td class="text-nowrap">{{ item.team }}</td>
+                <td class="text-nowrap">{{ item.chiName }}</td>
+                <td class="text-nowrap">{{ item.partid }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <SelfPagination
+      :pages="pages"
+      @currentPage="getCurrentPage"
+      class="d-flex justify-content-center my-pagination"
+      v-if="filterTeams.length > 0"
+    ></SelfPagination>
   </div>
 </template>
+
+<script>
+import SelfPagination from "@/components/tool/SelfPagination.vue";
+
+export default {
+  components: {
+    SelfPagination,
+  },
+  mounted() {
+    this.getTeamInfo();
+  },
+  computed: {
+    filterTeams() {
+      const array = this.teams.filter((item) => {
+        let boo = false;
+        for (const prop in item) {
+          if (prop === "id") {
+            continue;
+          } else if (
+            item[prop]
+              .toString()
+              .toLowerCase()
+              .includes(this.fuzzySearch.toString().toLowerCase())
+          ) {
+            boo = true;
+          }
+        }
+        return boo;
+      });
+      return array;
+    },
+    displayTeams() {
+      const begin = this.perPage * (this.currentPage - 1);
+      const end = this.perPage * this.currentPage;
+      return this.filterTeams.slice(begin, end);
+    },
+    pages() {
+      return Math.ceil(this.filterTeams.length / this.perPage);
+    },
+  },
+  data() {
+    return {
+      teams: [], // api回傳資訊
+      perPage: 10, // 一頁顯示幾個項目
+      currentPage: 1, // 目前所在的頁數
+      fuzzySearch: "", // 模糊搜尋
+      leagues: [
+        { value: "MLB", label: "美國職棒MLB" },
+        { value: "NBA", label: "美國職籃NBA" },
+        { value: "NHL", label: "美國冰球NHL" },
+      ],
+    };
+  },
+  methods: {
+    getTeamInfo() {
+      const postBody = JSON.stringify({
+        url: this.getExcelUrl(),
+        page: 4,
+      });
+      this.axios
+        .post(this.getReadAllValueApi(), postBody)
+        .then((response) => {
+          this.teams = response.data;
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+    getCurrentPage(currentPage) {
+      this.currentPage = currentPage;
+    },
+  },
+};
+</script>
+
+<style>
+.my-pagination .disabled .page-link {
+  border-color: transparent;
+}
+</style>
