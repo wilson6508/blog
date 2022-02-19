@@ -84,8 +84,8 @@ export default {
   components: {
     SelfPagination,
   },
-  mounted() {
-    this.getTeamInfo();
+  async mounted() {
+    await this.getTeamInfo();
   },
   computed: {
     filterTeams() {
@@ -131,9 +131,7 @@ export default {
   },
   methods: {
     async getTeamInfo() {
-      // url: this.getExcelUrl(),
-      // const url = this.getReadAllValueApi();
-      const url = this.getApiUrl("readAll");
+      const url = this.getApiUrl("readValue");
       const postBody = {
         url: this.getApiUrl("firstExcel"),
         page: 4,

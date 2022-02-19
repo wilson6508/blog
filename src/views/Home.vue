@@ -3,14 +3,14 @@
     <nav
       class="navbar navbar-opv navbar-light navbar-vertical navbar-expand-md"
     >
-      <!--三明治切換選單-->
+      <!--三明治-->
       <div class="d-flex align-items-center">
         <div class="toggle-icon-wrapper mt-2 mb-2">
           <button
             class="btn navbar-toggler-humburger-icon navbar-vertical-toggle"
             data-bs-toggle="tooltip"
             data-bs-placement="left"
-            title="切換選單"
+            title="功能選單"
           >
             <span class="navbar-toggle-icon"
               ><span class="toggle-line"></span
@@ -98,9 +98,14 @@ export default {
               label: "股價折線圖",
             },
             {
-              url: "DividendHistory",
+              url: "SpyVs00646",
+              icon: "sports_kabaddi",
+              label: "Spy Vs 00646",
+            },
+            {
+              url: "TdTradeLog",
               icon: "savings",
-              label: "除息紀錄",
+              label: "美股交易紀錄",
             },
           ],
         },
@@ -122,7 +127,6 @@ export default {
         .querySelector(".navbar-vertical")
         .classList.add(`navbar-${navbarStyle}`);
     }
-    // this.$router.push("blog/WelcomePage");
   },
 };
 </script>

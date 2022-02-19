@@ -3,7 +3,6 @@ import VueRouter from "vue-router";
 import Home from "@/views/Home.vue";
 import TeamList from "@/components/sport/TeamList.vue";
 import NBA from "@/components/sport/NBA.vue";
-import DividendHistory from "@/components/stock/DividendHistory.vue";
 import PriceHistory from "@/components/stock/PriceHistory.vue";
 import WelcomePage from "@/components/welcome/WelcomePage.vue";
 import StockHome from "@/components/stock/StockHome";
@@ -14,6 +13,8 @@ import Pagination01 from "@/components/vue/Pagination01.vue";
 import Pagination02 from "@/components/vue/Pagination02.vue";
 import Rollover from "@/components/stockSelf/Rollover.vue";
 import StockApi from "@/components/stockSelf/StockApi.vue";
+import TdTradeLog from "@/components/stock/TdTradeLog.vue";
+import SpyVs00646 from "@/components/stock/SpyVs00646.vue";
 
 Vue.use(VueRouter);
 
@@ -53,10 +54,17 @@ const routes = [{
         }
       },
       {
-        path: "/DividendHistory",
-        component: DividendHistory,
+        path: "/SpyVs00646",
+        component: SpyVs00646,
         meta: {
-          title: "除息紀錄"
+          title: "Spy Vs 00646"
+        }
+      },
+      {
+        path: "/TdTradeLog",
+        component: TdTradeLog,
+        meta: {
+          title: "美股交易紀錄"
         }
       },
     ],
