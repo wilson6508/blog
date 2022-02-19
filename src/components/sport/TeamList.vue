@@ -130,19 +130,18 @@ export default {
     };
   },
   methods: {
-    getTeamInfo() {
-      const postBody = JSON.stringify({
-        url: this.getExcelUrl(),
+    async getTeamInfo() {
+      // url: this.getExcelUrl(),
+      // const url = this.getReadAllValueApi();
+      const url = this.getApiUrl("readAll");
+      const postBody = {
+        url: this.getApiUrl("firstExcel"),
         page: 4,
-      });
-      this.axios
-        .post(this.getReadAllValueApi(), postBody)
-        .then((response) => {
-          this.teams = response.data;
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+      };
+      const result = await this.getApiResult(url, postBody);
+      if (result !== null) {
+        this.teams = result;
+      }
     },
     getCurrentPage(currentPage) {
       this.currentPage = currentPage;
