@@ -114,6 +114,7 @@
           </div>
         </div>
       </div>
+      <!--右上table-->
       <div class="card col m-2">
         <div class="card-body position-relative">
           <!--按鈕列-->
@@ -134,7 +135,11 @@
             >
               放大視窗
             </button>
-            <button class="btn btn-success btn-sm mx-1" type="button">
+            <button
+              class="btn btn-success btn-sm mx-1"
+              type="button"
+              @click="openDividend()"
+            >
               新增
             </button>
             <button
@@ -234,6 +239,7 @@
           </div>
         </div>
       </div>
+      <!--右上table-->
     </div>
     <div v-show="highChart" class="row">
       <div class="card col m-2">
@@ -348,11 +354,23 @@
         </div>
       </div>
     </div>
+    <a
+      v-show="false"
+      id="openUsaDividend"
+      data-bs-toggle="modal"
+      data-bs-target="#usaDividendId"
+    ></a>
+    <UsaDividend ref="usaDividend"></UsaDividend>
   </div>
 </template>
 
 <script>
+import UsaDividend from "@/components/modal/UsaDividend";
+
 export default {
+  components: {
+    UsaDividend,
+  },
   async mounted() {
     await this.readDividend();
   },
@@ -368,13 +386,6 @@ export default {
       ],
       rightReadMode: true,
       rightDeleteMode: false,
-      rightMapping: new Map([
-        [1, "date"],
-        [2, "symbol"],
-        [3, "ordinaryDividend"],
-        [4, "w8Withholding"],
-        [5, "delta"],
-      ]),
       tradeLog: true,
       highChart: true,
       mhpx: 300,
@@ -385,7 +396,7 @@ export default {
     async readApi(page) {
       const url = this.getApiUrl("readValue");
       const postBody = {
-        url: this.getApiUrl("firstExcel"),
+        url: this.getApiUrl("secondExcel"),
         page: page,
       };
       return await this.getApiResult(url, postBody);
@@ -393,7 +404,7 @@ export default {
     async updateApi(page, dataArr) {
       const url = this.getApiUrl("updateValue");
       const postBody = {
-        url: this.getApiUrl("firstExcel"),
+        url: this.getApiUrl("secondExcel"),
         page: page,
         data: dataArr,
       };
@@ -401,7 +412,7 @@ export default {
     },
     // 讀取table
     async readDividend() {
-      const result = await this.readApi(7);
+      const result = await this.readApi(3);
       if (result !== null) {
         this.rightApiResult = result.map((item, index) => {
           item.rowNum = index + 2;
@@ -411,25 +422,19 @@ export default {
     },
     // 更新table
     async updateDividend(rightDataArr) {
-      await this.updateApi(7, rightDataArr);
+      await this.updateApi(3, rightDataArr);
     },
     // 新增資料
-    // 編輯資料
-    async updateDivInfo(item) {
-      const rightDataArr = this.getRightDataArr(item);
-      await this.updateDividend(rightDataArr);
-      await this.readDividend();
+    openDividend() {
+      this.$refs.usaDividend.rowNum = this.rightApiResult.length + 2;
+      document.getElementById("openUsaDividend").click();
     },
-    getRightDataArr(item) {
-      const dataArr = [];
-      for (let [key, value] of this.rightMapping) {
-        dataArr.push({
-          row: item.rowNum,
-          col: key,
-          val: item[value],
-        });
-      }
-      return dataArr;
+    // 編輯資料
+    updateDivInfo(item) {
+      console.log(item);
+      // const rightDataArr = this.getRightDataArr(item);
+      // await this.updateDividend(rightDataArr);
+      // await this.readDividend();
     },
     // 刪除資料
     // 控制模式

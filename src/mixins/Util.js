@@ -34,5 +34,16 @@ export default {
                 });
             return result;
         },
+        getDataArr(rowNum, item, mapping) {
+            const dataArr = [];
+            for (let [key, value] of mapping) {
+                dataArr.push({
+                    row: rowNum,
+                    col: key,
+                    val: item[value],
+                });
+            }
+            return dataArr;
+        },
     }
 };
