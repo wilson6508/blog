@@ -119,7 +119,6 @@
           <!--按鈕列-->
           <div>
             <h4 class="d-flex justify-content-center">股息紀錄</h4>
-            <button class="float-right">OK</button>
           </div>
           <div class="d-flex align-items-center justify-content-end my-3">
             <button
