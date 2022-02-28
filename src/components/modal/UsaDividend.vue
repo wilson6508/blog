@@ -30,7 +30,7 @@
             class="rounded-top-lg py-3 ps-4 pe-6"
             style="background-color: black"
           >
-            <h4 class="mb-1" style="color: white">新增資料</h4>
+            <h4 class="mb-1" style="color: white">{{ title }}</h4>
           </div>
           <div class="p-4 pb-0">
             <div class="row mb-4">
@@ -96,13 +96,14 @@
 export default {
   data() {
     return {
+      title: "",
       rowNum: 0,
       modalInfo: {
         date: "",
         symbol: "",
-        ordinaryDividend: "",
-        w8Withholding: "",
-        delta: "",
+        ordinaryDividend: 0,
+        w8Withholding: 0,
+        delta: 0,
       },
       mapping: new Map([
         [1, "date"],

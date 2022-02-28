@@ -109,6 +109,19 @@ export default {
             },
           ],
         },
+        {
+          id: "leftItem4",
+          use: "second",
+          icon: "airline_seat_recline_normal",
+          label: "生活",
+          children: [
+            {
+              url: "DailyConsumption",
+              icon: "price_check",
+              label: "日常消費",
+            },
+          ],
+        },
         // { use: "second", url: "", icon: "home", label: "職業運動" },
         // { use: "third", url: "", icon: "home", label: "職業運動" },
       ],

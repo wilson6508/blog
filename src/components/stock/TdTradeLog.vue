@@ -1,8 +1,11 @@
 <template>
   <div>
     <div class="row">
+      <!--左上table-->
       <div v-show="tradeLog" class="card col m-2">
         <div class="card-body position-relative">
+          <!--按鈕列-->
+          <h4 class="d-flex justify-content-center">交易紀錄</h4>
           <div class="d-flex align-items-center justify-content-end my-3">
             <button
               v-if="rightReadMode"
@@ -40,7 +43,7 @@
             style="max-height: 300px; overflow-y: auto"
           >
             <table class="table mb-0">
-              <!--rightColumns-->
+              <!--columns-->
               <thead class="text-black bg-300">
                 <tr class="text-center">
                   <th
@@ -100,11 +103,7 @@
                     v-if="rightReadMode"
                     class="align-middle white-space-nowrap"
                   >
-                    <button
-                      class="btn btn-falcon-default btn-sm"
-                      type="button"
-                      @click="updateDivInfo(item)"
-                    >
+                    <button class="btn btn-falcon-default btn-sm" type="button">
                       編輯
                     </button>
                   </td>
@@ -118,6 +117,10 @@
       <div class="card col m-2">
         <div class="card-body position-relative">
           <!--按鈕列-->
+          <div>
+            <h4 class="d-flex justify-content-center">股息紀錄</h4>
+            <button class="float-right">OK</button>
+          </div>
           <div class="d-flex align-items-center justify-content-end my-3">
             <button
               v-if="rightReadMode"
@@ -136,9 +139,10 @@
               放大視窗
             </button>
             <button
+              v-if="rightReadMode"
               class="btn btn-success btn-sm mx-1"
               type="button"
-              @click="openDividend()"
+              @click="createDividend()"
             >
               新增
             </button>
@@ -146,8 +150,9 @@
               v-if="rightDeleteMode"
               class="btn btn-primary btn-sm mx-1"
               type="button"
+              @click="deleteDividend()"
             >
-              刪除選取項目
+              刪除選取
             </button>
             <button
               v-if="rightDeleteMode"
@@ -203,7 +208,11 @@
                     class="align-middle white-space-nowrap"
                   >
                     <div>
-                      <input class="form-check-input" type="checkbox" />
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        v-model="item.selected"
+                      />
                     </div>
                   </td>
                   <td class="align-middle white-space-nowrap">
@@ -228,7 +237,7 @@
                     <button
                       class="btn btn-falcon-default btn-sm"
                       type="button"
-                      @click="updateDivInfo(item)"
+                      @click="updateDividend(item)"
                     >
                       編輯
                     </button>
@@ -239,12 +248,13 @@
           </div>
         </div>
       </div>
-      <!--右上table-->
     </div>
+    <!--底下highChart-->
     <div v-show="highChart" class="row">
       <div class="card col m-2">
         <div class="card-body position-relative">
-          <!--新增刪除按鈕-->
+          <h4 class="d-flex justify-content-center">庫存變化</h4>
+          <!--按鈕列-->
           <div class="d-flex align-items-center justify-content-end my-3">
             <button
               v-if="rightReadMode"
@@ -354,6 +364,7 @@
         </div>
       </div>
     </div>
+    <!--modal-->
     <a
       v-show="false"
       id="openUsaDividend"
@@ -389,6 +400,13 @@ export default {
       tradeLog: true,
       highChart: true,
       mhpx: 300,
+      mapping: new Map([
+        [1, "date"],
+        [2, "symbol"],
+        [3, "ordinaryDividend"],
+        [4, "w8Withholding"],
+        [5, "delta"],
+      ]),
     };
   },
   methods: {
@@ -414,29 +432,49 @@ export default {
     async readDividend() {
       const result = await this.readApi(3);
       if (result !== null) {
-        this.rightApiResult = result.map((item, index) => {
+        const temp = result.map((item, index) => {
+          item.selected = false;
           item.rowNum = index + 2;
           return item;
         });
+        this.rightApiResult = temp.reverse();
       }
     },
-    // 更新table
-    async updateDividend(rightDataArr) {
-      await this.updateApi(3, rightDataArr);
-    },
     // 新增資料
-    openDividend() {
+    createDividend() {
+      this.$refs.usaDividend.title = "新增資料";
+      this.$refs.usaDividend.modalInfo = {};
       this.$refs.usaDividend.rowNum = this.rightApiResult.length + 2;
       document.getElementById("openUsaDividend").click();
     },
-    // 編輯資料
-    updateDivInfo(item) {
-      console.log(item);
-      // const rightDataArr = this.getRightDataArr(item);
-      // await this.updateDividend(rightDataArr);
-      // await this.readDividend();
+    // 更新資料
+    updateDividend(item) {
+      this.$refs.usaDividend.title = "編輯資料";
+      this.$refs.usaDividend.modalInfo = JSON.parse(JSON.stringify(item));
+      this.$refs.usaDividend.rowNum = item.rowNum;
+      document.getElementById("openUsaDividend").click();
     },
     // 刪除資料
+    async deleteDividend() {
+      const tempArr = this.rightApiResult.filter((e) => e.selected);
+      const dataArr = [];
+      for (const item of tempArr) {
+        item.date = "";
+        item.symbol = "";
+        item.ordinaryDividend = "";
+        item.w8Withholding = "";
+        item.delta = "";
+        dataArr.push(...this.getDataArr(item.rowNum, item, this.mapping));
+      }
+      const url = this.getApiUrl("updateValue");
+      const postBody = {
+        url: this.getApiUrl("secondExcel"),
+        page: 3,
+        data: dataArr,
+      };
+      await this.getApiResult(url, postBody);
+      await this.readDividend();
+    },
     // 控制模式
     rightMode(str) {
       this.rightReadMode = false;

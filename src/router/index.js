@@ -15,6 +15,7 @@ import Rollover from "@/components/stockSelf/Rollover.vue";
 import StockApi from "@/components/stockSelf/StockApi.vue";
 import TdTradeLog from "@/components/stock/TdTradeLog.vue";
 import SpyVs00646 from "@/components/stock/SpyVs00646.vue";
+import DailyConsumption from "@/components/life/DailyConsumption.vue";
 
 Vue.use(VueRouter);
 
@@ -65,6 +66,13 @@ const routes = [{
         component: TdTradeLog,
         meta: {
           title: "美股交易紀錄"
+        }
+      },
+      {
+        path: "/DailyConsumption",
+        component: DailyConsumption,
+        meta: {
+          title: "日常消費"
         }
       },
     ],
