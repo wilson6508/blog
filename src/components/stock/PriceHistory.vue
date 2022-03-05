@@ -1,3 +1,528 @@
 <template>
-  <div>78910</div>
+  <div>
+    <div class="row">
+      <div class="col-7">
+        <FigTool :figure="bar"></FigTool>
+      </div>
+      <div class="col-5">
+        <FigTool :figure="pie"></FigTool>
+      </div>
+    </div>
+    <br />
+    <FigTool :figure="line"></FigTool>
+  </div>
 </template>
+
+<script>
+import FigTool from "@/components/tool/FigTool";
+
+export default {
+  components: {
+    FigTool,
+  },
+  data() {
+    return {
+      bar: {
+        id: "trendBarChart",
+        chart: {
+          type: "bar",
+        },
+        title: {
+          text: "聲量統計-長條圖",
+        },
+        xAxis: {
+          categories: ["疫情", "公投", "民進黨"],
+        },
+        yAxis: {
+          title: {
+            text: "則數",
+          },
+        },
+        series: [
+          {
+            data: [
+              { y: 22357, color: "#7cb5ec" },
+              { y: 43257, color: "#434348" },
+              { y: 37000, color: "#90ed7d" },
+            ],
+            showInLegend: false,
+          },
+        ],
+        tooltip: {
+          headerFormat: "{point.key}<br>",
+          pointFormat: "共{point.y}則",
+        },
+        plotOptions: {
+          bar: {
+            dataLabels: {
+              enabled: true, // 顯示數據
+            },
+          },
+        },
+        credits: {
+          enabled: false,
+        },
+        exporting: {
+          sourceWidth: 700,
+          buttons: false,
+        },
+      },
+      line: {
+        id: "trendDayLineChart",
+        chart: { type: "line" },
+        title: { text: "聲量統計-折線圖" },
+        xAxis: {
+          categories: [
+            "02/01",
+            "02/02",
+            "02/03",
+            "02/04",
+            "02/05",
+            "02/06",
+            "02/07",
+            "02/08",
+            "02/09",
+            "02/10",
+            "02/11",
+            "02/12",
+            "02/13",
+            "02/14",
+            "02/15",
+            "02/16",
+            "02/17",
+            "02/18",
+            "02/19",
+            "02/20",
+            "02/21",
+            "02/22",
+            "02/23",
+            "02/24",
+            "02/25",
+            "02/26",
+            "02/27",
+            "02/28",
+          ],
+        },
+        yAxis: {
+          title: {
+            text: "則數",
+          },
+        },
+        series: [
+          {
+            name: "玉山銀行",
+            data: [
+              {
+                y: 34,
+              },
+              {
+                y: 68,
+              },
+              {
+                y: 58,
+              },
+              {
+                y: 44,
+              },
+              {
+                y: 46,
+              },
+              {
+                y: 48,
+              },
+              {
+                y: 63,
+              },
+              {
+                y: 81,
+              },
+              {
+                y: 72,
+              },
+              {
+                y: 129,
+              },
+              {
+                y: 108,
+              },
+              {
+                y: 71,
+              },
+              {
+                y: 58,
+              },
+              {
+                y: 57,
+              },
+              {
+                y: 175,
+              },
+              {
+                y: 84,
+              },
+              {
+                y: 85,
+              },
+              {
+                y: 155,
+              },
+              {
+                y: 68,
+              },
+              {
+                y: 48,
+              },
+              {
+                y: 94,
+              },
+              {
+                y: 54,
+              },
+              {
+                y: 64,
+              },
+              {
+                y: 132,
+              },
+              {
+                y: 115,
+              },
+              {
+                y: 92,
+              },
+              {
+                y: 74,
+              },
+              {
+                y: 151,
+              },
+            ],
+            color: "#ec5145",
+            visible: true,
+          },
+          {
+            name: "玉山銀行-7日均線",
+            data: [
+              {},
+              {},
+              {},
+              {},
+              {},
+              {},
+              {},
+              {
+                y: 51,
+              },
+              {
+                y: 58,
+              },
+              {
+                y: 58,
+              },
+              {
+                y: 69,
+              },
+              {
+                y: 78,
+              },
+              {
+                y: 81,
+              },
+              {
+                y: 83,
+              },
+              {
+                y: 82,
+              },
+              {
+                y: 95,
+              },
+              {
+                y: 97,
+              },
+              {
+                y: 91,
+              },
+              {
+                y: 97,
+              },
+              {
+                y: 97,
+              },
+              {
+                y: 96,
+              },
+              {
+                y: 101,
+              },
+              {
+                y: 84,
+              },
+              {
+                y: 81,
+              },
+              {
+                y: 87,
+              },
+              {
+                y: 82,
+              },
+              {
+                y: 85,
+              },
+              {
+                y: 89,
+              },
+            ],
+            color: "#ec5145",
+            dashStyle: "ShortDot",
+            showInLegend: false,
+            visible: true,
+          },
+          {
+            name: "兆豐銀行",
+            data: [
+              {
+                y: 9,
+              },
+              {
+                y: 8,
+              },
+              {
+                y: 12,
+              },
+              {
+                y: 29,
+              },
+              {
+                y: 9,
+              },
+              {
+                y: 28,
+              },
+              {
+                y: 134,
+              },
+              {
+                y: 59,
+              },
+              {
+                y: 35,
+              },
+              {
+                y: 50,
+              },
+              {
+                y: 429,
+              },
+              {
+                y: 69,
+              },
+              {
+                y: 22,
+              },
+              {
+                y: 64,
+              },
+              {
+                y: 161,
+              },
+              {
+                y: 93,
+              },
+              {
+                y: 102,
+              },
+              {
+                y: 73,
+              },
+              {
+                y: 40,
+              },
+              {
+                y: 10,
+              },
+              {
+                y: 40,
+              },
+              {
+                y: 89,
+              },
+              {
+                y: 52,
+              },
+              {
+                y: 53,
+              },
+              {
+                y: 28,
+              },
+              {
+                y: 46,
+              },
+              {
+                y: 17,
+              },
+              {
+                y: 20,
+              },
+            ],
+            color: "#f18a2f",
+            visible: true,
+          },
+          {
+            name: "兆豐銀行-7日均線",
+            data: [
+              {},
+              {},
+              {},
+              {},
+              {},
+              {},
+              {},
+              {
+                y: 32,
+              },
+              {
+                y: 39,
+              },
+              {
+                y: 43,
+              },
+              {
+                y: 49,
+              },
+              {
+                y: 106,
+              },
+              {
+                y: 114,
+              },
+              {
+                y: 114,
+              },
+              {
+                y: 104,
+              },
+              {
+                y: 118,
+              },
+              {
+                y: 126,
+              },
+              {
+                y: 134,
+              },
+              {
+                y: 83,
+              },
+              {
+                y: 79,
+              },
+              {
+                y: 77,
+              },
+              {
+                y: 74,
+              },
+              {
+                y: 63,
+              },
+              {
+                y: 58,
+              },
+              {
+                y: 51,
+              },
+              {
+                y: 44,
+              },
+              {
+                y: 45,
+              },
+              {
+                y: 46,
+              },
+            ],
+            color: "#f18a2f",
+            dashStyle: "ShortDot",
+            showInLegend: false,
+            visible: true,
+          },
+        ],
+        tooltip: {
+          headerFormat: "<b>{series.name}</b><br>{point.key}日<br>",
+          pointFormat: "共{point.y}則",
+        },
+        plotOptions: {
+          line: {
+            dataLabels: {
+              enabled: true, // 顯示數據
+            },
+          },
+          series: {
+            events: {
+              click(event) {
+                // 單主題
+                console.log(`x = ${event.point.category}`);
+                console.log(`y = ${event.point.options.y}`);
+                console.log(`name = ${event.point.series.name}`);
+              },
+              legendItemClick: (event) => {
+                const visible = this.line.series[event.target.index].visible;
+                this.line.series[event.target.index].visible = !visible;
+                this.line.series[event.target.index + 1].visible = !visible;
+              },
+            },
+          },
+        },
+        credits: {
+          enabled: false,
+        },
+        exporting: {
+          sourceWidth: 1400,
+          buttons: false,
+        },
+      },
+      pie: {
+        id: "trendPieChart",
+        chart: {
+          type: "pie",
+        },
+        title: {
+          text: "聲量統計-圓餅圖",
+        },
+        tooltip: {
+          headerFormat: "<b>{point.key}</b><br>",
+          pointFormat: "共<b>{point.percentage:.1f}%</b>",
+        },
+        plotOptions: {
+          pie: {
+            allowPointSelect: true,
+            dataLabels: {
+              enabled: true,
+              format: "<b>{point.name}</b><br><b>{point.percentage:.1f}%</b>",
+            },
+          },
+        },
+        series: [
+          {
+            data: [
+              { name: "疫情", y: 1223, color: "#7cb5ec" },
+              { name: "公投", y: 1132, color: "#434348" },
+              { name: "民進黨", y: 1021, color: "#90ed7d" },
+            ],
+          },
+        ],
+        credits: {
+          enabled: false,
+        },
+        exporting: {
+          sourceWidth: 500,
+          buttons: false,
+        },
+      },
+    };
+  },
+};
+</script>

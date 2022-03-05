@@ -127,7 +127,7 @@ export default {
       let arr = [];
       switch (this.modalInfo.type) {
         case "飲食": {
-          arr = ["鍋貼", "全聯", "7-11", "麥當勞", "寧記麻辣"];
+          arr = ["鍋貼", "全聯", "7-11", "麥當勞", "早餐店", "寧記麻辣", "東門鴨莊", "雞二拉麵", "麻古茶坊"];
           break;
         }
         case "交通費": {
