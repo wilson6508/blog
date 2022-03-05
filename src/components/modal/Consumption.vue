@@ -1,123 +1,123 @@
 <template>
-<div>
+  <div>
     <a
       v-show="false"
       id="modalConsumption"
       data-bs-toggle="modal"
       data-bs-target="#consumptionModal"
     ></a>
-  <div
-    class="modal fade"
-    id="consumptionModal"
-    tabindex="-1"
-    role="dialog"
-    aria-hidden="true"
-    data-bs-backdrop="static"
-  >
     <div
-      class="modal-dialog modal-dialog-centered"
-      role="document"
-      style="max-width: 500px"
+      class="modal fade"
+      id="consumptionModal"
+      tabindex="-1"
+      role="dialog"
+      aria-hidden="true"
+      data-bs-backdrop="static"
     >
-      <div class="modal-content position-relative">
-        <div class="position-absolute top-0 end-0 mt-2 me-2 z-index-1">
-          <button
-            class="
-              btn-close btn btn-sm btn-circle
-              d-flex
-              flex-center
-              transition-base
-            "
-            data-bs-dismiss="modal"
-            aria-label="Close"
-          ></button>
-        </div>
-        <div class="modal-body p-0">
-          <div
-            class="rounded-top-lg py-3 ps-4 pe-6"
-            style="background-color: black"
-          >
-            <h4 class="mb-1" style="color: white">{{ title }}</h4>
+      <div
+        class="modal-dialog modal-dialog-centered"
+        role="document"
+        style="max-width: 500px"
+      >
+        <div class="modal-content position-relative">
+          <div class="position-absolute top-0 end-0 mt-2 me-2 z-index-1">
+            <button
+              class="
+                btn-close btn btn-sm btn-circle
+                d-flex
+                flex-center
+                transition-base
+              "
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
           </div>
-          <div class="p-4 pb-0">
-            <div class="row mb-3">
-              <div class="col-6">
-                <label class="col-form-label">類型:</label>
-                <select class="form-select" v-model="modalInfo.type">
-                  <option value="">請選擇</option>
-                  <option
-                    v-for="(item, index) in typeArr"
-                    :key="index"
-                    :value="item"
-                  >
-                    {{ item }}
-                  </option>
-                </select>
-              </div>
-              <div class="col-6">
-                <label class="col-form-label">日期:</label>
-                <input
-                  class="form-control"
-                  type="date"
-                  v-model="modalInfo.date"
-                />
-              </div>
+          <div class="modal-body p-0">
+            <div
+              class="rounded-top-lg py-3 ps-4 pe-6"
+              style="background-color: black"
+            >
+              <h4 class="mb-1" style="color: white">{{ title }}</h4>
             </div>
-            <div class="row mb-3">
-              <div class="col-6">
-                <label class="col-form-label">地點:</label>
-                <select
-                  class="form-select"
-                  v-model="modalInfo.place"
-                  :disabled="modalInfo.type === ''"
-                >
-                  <option value="">
-                    {{ modalInfo.type === "" ? "請先選擇類型" : "請選擇" }}
-                  </option>
-                  <option
-                    v-for="(item, index) in placeArr"
-                    :key="index"
-                    :value="item"
+            <div class="p-4 pb-0">
+              <div class="row mb-3">
+                <div class="col-6">
+                  <label class="col-form-label">類型:</label>
+                  <select class="form-select" v-model="modalInfo.type">
+                    <option value="">請選擇</option>
+                    <option
+                      v-for="(item, index) in typeArr"
+                      :key="index"
+                      :value="item"
+                    >
+                      {{ item }}
+                    </option>
+                  </select>
+                </div>
+                <div class="col-6">
+                  <label class="col-form-label">日期:</label>
+                  <input
+                    class="form-control"
+                    type="date"
+                    v-model="modalInfo.date"
+                  />
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-6">
+                  <label class="col-form-label">地點:</label>
+                  <select
+                    class="form-select"
+                    v-model="modalInfo.place"
+                    :disabled="modalInfo.type === ''"
                   >
-                    {{ item }}
-                  </option>
-                </select>
+                    <option value="">
+                      {{ modalInfo.type === "" ? "請先選擇類型" : "請選擇" }}
+                    </option>
+                    <option
+                      v-for="(item, index) in placeArr"
+                      :key="index"
+                      :value="item"
+                    >
+                      {{ item }}
+                    </option>
+                  </select>
+                </div>
+                <div class="col-6">
+                  <label class="col-form-label">內容:</label>
+                  <input
+                    class="form-control"
+                    type="text"
+                    v-model="modalInfo.content"
+                  />
+                </div>
               </div>
-              <div class="col-6">
-                <label class="col-form-label">內容:</label>
-                <input
-                  class="form-control"
-                  type="text"
-                  v-model="modalInfo.content"
-                />
-              </div>
-            </div>
-            <div class="row mb-4">
-              <div class="col-12">
-                <label class="col-form-label">消費金額:</label>
-                <input
-                  class="form-control"
-                  type="number"
-                  v-model="modalInfo.amount"
-                />
+              <div class="row mb-4">
+                <div class="col-12">
+                  <label class="col-form-label">消費金額:</label>
+                  <input
+                    class="form-control"
+                    type="number"
+                    v-model="modalInfo.amount"
+                  />
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        <div class="modal-footer">
-          <button
-            class="btn btn-primary"
-            type="button"
-            data-bs-dismiss="modal"
-            @click="save()"
-          >
-            儲存
-          </button>
+          <div class="modal-footer">
+            <button
+              class="btn btn-primary"
+              type="button"
+              data-bs-dismiss="modal"
+              @click="save()"
+            >
+              儲存
+            </button>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>  
 </template>
 
 <script>
@@ -127,7 +127,18 @@ export default {
       let arr = [];
       switch (this.modalInfo.type) {
         case "飲食": {
-          arr = ["鍋貼", "全聯", "7-11", "麥當勞", "早餐店", "寧記麻辣", "東門鴨莊", "雞二拉麵", "麻古茶坊"];
+          arr = [
+            "鍋貼",
+            "全聯",
+            "7-11",
+            "麥當勞",
+            "早餐店",
+            "寧記麻辣",
+            "東門鴨莊",
+            "雞二拉麵",
+            "麻古茶坊",
+            "蚵仔麵線",
+          ];
           break;
         }
         case "交通費": {
