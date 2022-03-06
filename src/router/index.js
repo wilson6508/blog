@@ -8,11 +8,6 @@ import WelcomePage from "@/components/welcome/WelcomePage.vue";
 import StockHome from "@/components/stock/StockHome";
 import StockInfo from "@/components/stock/StockInfo";
 import StockLog from "@/components/stock/StockLog";
-import VueHome from "@/components/vue/VueHome.vue";
-import Pagination01 from "@/components/vue/Pagination01.vue";
-import Pagination02 from "@/components/vue/Pagination02.vue";
-import Rollover from "@/components/stockSelf/Rollover.vue";
-import StockApi from "@/components/stockSelf/StockApi.vue";
 import TdTradeLog from "@/components/stock/TdTradeLog.vue";
 import SpyVs00646 from "@/components/stock/SpyVs00646.vue";
 import DailyConsumption from "@/components/life/DailyConsumption.vue";
@@ -99,44 +94,6 @@ const routes = [{
       },
     ]
   },
-  {
-    path: "/Rollover",
-    name: "Rollover",
-    component: Rollover,
-    meta: {
-      title: "轉倉測試"
-    }
-  },
-  {
-    path: "/StockApi",
-    name: "StockApi",
-    component: StockApi,
-    meta: {
-      title: "淨值查詢"
-    }
-  },
-  {
-    path: "/VueHome",
-    name: "VueHome",
-    component: VueHome,
-    children: [{
-        path: "Pagination01",
-        name: "Pagination01",
-        component: Pagination01,
-        meta: {
-          title: "分頁處理01"
-        }
-      },
-      {
-        path: "Pagination02",
-        name: "Pagination02",
-        component: Pagination02,
-        meta: {
-          title: "分頁處理02"
-        }
-      },
-    ]
-  }
 ];
 
 const router = new VueRouter({
