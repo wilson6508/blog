@@ -109,9 +109,9 @@ export default {
               label: "股價折線圖",
             },
             {
-              url: "SpyVs00646",
+              url: "stock/exchange",
               icon: "sports_kabaddi",
-              label: "Spy Vs 00646",
+              label: "Exchange",
             },
             {
               url: "TdTradeLog",

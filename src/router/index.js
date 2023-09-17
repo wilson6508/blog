@@ -7,7 +7,6 @@ import TeamList from "@/components/sport/TeamList.vue";
 import NBA from "@/components/sport/NBA.vue";
 import PriceHistory from "@/components/stock/PriceHistory.vue";
 import TdTradeLog from "@/components/stock/TdTradeLog.vue";
-import SpyVs00646 from "@/components/stock/SpyVs00646.vue";
 
 Vue.use(VueRouter);
 
@@ -54,10 +53,10 @@ const routes = [{
       }
     },
     {
-      path: "/SpyVs00646",
-      component: SpyVs00646,
+      path: "/stock/exchange",
+      component: () => import("@/components/stock/Exchange.vue"),
       meta: {
-        title: "Spy Vs 00646"
+        title: "Exchange"
       }
     },
     {
