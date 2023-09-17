@@ -32,16 +32,20 @@ export default {
     return {
       msgArrayList: [],
       queryList: [
+        //
+        "00631L",
+        "00733",
         "0050",
-        // "0055",
-        "0056",
         "006208",
-        "00692",
+        //
+        // "0056",
+        // "00692",
+        // "00713",
+        "00919",
+        "00929",
+        // 
         "00646",
-        // "00701",
         "00876",
-        "00878",
-        "00888",
       ],
       items: [],
       fields: [
@@ -102,13 +106,11 @@ export default {
               });
             }
           }
-          this.items = [];
-          this.items = this.msgArrayList.filter((e) =>
+          const tempArr = this.msgArrayList.filter((e) =>
             this.queryList.includes(e.a)
           );
-          this.items = this.items.sort(this.compare01);
+          this.items = this.queryList.map(id => tempArr.find(obj => obj.a === id));
           for (const item of this.items) {
-            // item.idName = `${item.a} ${item.b}`;
             item.g = item.g + "%";
           }
         })
@@ -127,7 +129,7 @@ export default {
         const ba3 = parseInt(b.a.charAt(3));
         return aa3 - ba3;
       }
-    },
+    }
   },
 };
 </script>

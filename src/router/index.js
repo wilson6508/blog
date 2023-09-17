@@ -5,7 +5,6 @@ import StockHome from "@/components/stock/StockHome";
 import StockInfo from "@/components/stock/StockInfo";
 import StockLog from "@/components/stock/StockLog";
 import BasketBall from "@/components/sport/BasketBall.vue";
-import BaseBall from "@/components/sport/BaseBall.vue";
 import VueHome from "@/components/vue/VueHome.vue";
 import Pagination01 from "@/components/vue/Pagination01.vue";
 import Pagination02 from "@/components/vue/Pagination02.vue";
@@ -51,14 +50,6 @@ const routes = [{
     component: BasketBall,
     meta: {
       title: "NBA"
-    }
-  },
-  {
-    path: "/BaseBall",
-    name: "BaseBall",
-    component: BaseBall,
-    meta: {
-      title: "MLB"
     }
   },
   {
