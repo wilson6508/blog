@@ -162,12 +162,12 @@ export default {
   },
   methods: {
     getApiRep() {
-      const postBody = JSON.stringify({ url: this.getAllEtfUrl() });
+      const apiUrl = "https://script.google.com/macros/s/AKfycbzBLSL6s5Reo3R64dBJ1tWUxCZSTPkO4nKV974-vyJH3Q6At23mM-RMKS8e60_rXMU4wA/exec";
       this.axios
-        .post(this.getReadOtherApi(), postBody)
+        .get(apiUrl)
         .then((response) => {
           this.msgArrayList = [];
-          for (const item of response.data.a1) {
+          for (const item of response.data) {
             if (item.msgArray) {
               item.msgArray.forEach((element) => {
                 this.msgArrayList.push(element);

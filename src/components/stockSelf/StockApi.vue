@@ -39,9 +39,10 @@ export default {
         // "00713",
         // "00919",
         // "00929",
-        "00733",
         "00631L",
+        "00675L",
         "00646",
+        "00830",
         "00876",
       ],
       items: [],
@@ -85,18 +86,11 @@ export default {
   },
   methods: {
     getApiRep123() {
-      const data = {
-        url: "https://mis.twse.com.tw/stock/data/all_etf.txt?1632842984044&_=1632842983379",
-      };
-      const postBody = JSON.stringify(data);
-      this.axios
-        .post(
-          "https://script.google.com/macros/s/AKfycbz_zhyNeEPxyfndm9YwknPl90If0jJhS3MaE6bdR-lQUDC5k9OuCAK0jaKY-1csUi6h/exec",
-          postBody
-        )
+      const apiUrl = "https://script.google.com/macros/s/AKfycbzBLSL6s5Reo3R64dBJ1tWUxCZSTPkO4nKV974-vyJH3Q6At23mM-RMKS8e60_rXMU4wA/exec";
+      this.axios.get(apiUrl)
         .then((response) => {
           this.msgArrayList = [];
-          for (const item of response.data.a1) {
+          for (const item of response.data) {
             if (item.msgArray) {
               item.msgArray.forEach((element) => {
                 this.msgArrayList.push(element);
